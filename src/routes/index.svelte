@@ -3,37 +3,16 @@
 	import { page } from '$app/stores';
 	import { teams } from './fb-utils';
     import * as someJSON from './tweets.json';
-    // let data = someJSON
-    // console.log('someJSON', data)
-    // teams.sort(function(a, b){
-    //     return parseInt(data[b['name']].misc.story_id) - parseInt(data[a['name']].misc.story_id)
-    // });
-    // console.log('teams', teams)
-
-    // for (const { id, name } of teams) {
-    //     console.log('team', data[name])
-    // }
 
     let data = someJSON.default
     data = Object.keys(data).map(e => {
-        // let objt = {};
-        // objt[e] = data[e];
         return data[e]
     })
-    data.sort(function(a, b){
+    data.sort(function(a, b) {
         return b.misc.story_id - a.misc.story_id
     })
     console.log('data', data)
     
-    // teams.sort(function(a, b){
-    //     return parseInt(data[b['name']].misc.story_id) - parseInt(data[a['name']].misc.story_id)
-    // });
-    // console.log('teams', teams)
-
-    // for (const { id, name } of teams) {
-    //     console.log('team', data[name])
-    // }
-
     function addZeros(id) {
         if (String(id).length<3) {
             id = "0" + id
@@ -83,55 +62,8 @@
                 </div>
             </a>
 
-
-            <!-- <a sveltekit:prefetch href={'/team/'+id}>
-                <div class="team-div" class:active={$page.url.pathname === '/'+id}>
-                    <div class="row number">
-                        {((String(data[name].misc.story_id).length<3)?"0":"") + data[name].misc.story_id}
-                    </div>
-                    <div class="row name">
-                        {name}
-                    </div>
-                    <div class="row text">
-                        <div class='col1'>Opponent</div>
-                        <div>{data[name].misc.opponent}</div>
-                    </div>
-                    <div class="row text">
-                        <div class='col1'>Result</div>
-                        <div>{data[name].misc.result[0]}-{data[name].misc.result[1]}</div>
-                    </div>
-                    <div class="row text last">
-                        <div class='col1'>Date</div>
-                        <div>12/03/2022</div>
-                    </div>
-                </div>
-            </a> -->
         {/each}
 
-        <!-- {#each teams as { id, name }, i}
-            <a sveltekit:prefetch href={'/team/'+id}>
-                <div class="team-div" class:active={$page.url.pathname === '/'+id}>
-                    <div class="row number">
-                        {((String(data[name].misc.story_id).length<3)?"0":"") + data[name].misc.story_id}
-                    </div>
-                    <div class="row name">
-                        {name}
-                    </div>
-                    <div class="row text">
-                        <div class='col1'>Opponent</div>
-                        <div>{data[name].misc.opponent}</div>
-                    </div>
-                    <div class="row text">
-                        <div class='col1'>Result</div>
-                        <div>{data[name].misc.result[0]}-{data[name].misc.result[1]}</div>
-                    </div>
-                    <div class="row text last">
-                        <div class='col1'>Date</div>
-                        <div>12/03/2022</div>
-                    </div>
-                </div>
-            </a>
-        {/each} -->
     </div>
 </body>
 

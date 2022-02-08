@@ -2,18 +2,21 @@
 	import Header from '$lib/header/Header.svelte';
     import {page} from '$app/stores'
 	import { teams } from '../fb-utils'
+    import StackedBar from '/Users/theojolliffe/Documents/Football/svelte-fb-charts/src/stacked-bar/src/StackedBar.svelte';
+    import * as someChartJSON from '/Users/theojolliffe/Documents/Football/svelte-fb-charts/src/stacked-bar/src/passing.json';
+
+    let misc = someChartJSON.default.misc
+	console.log('misc', misc)
 
     import * as someJSON from '../tweets.json';
 
     import { Email, HackerNews, Reddit, LinkedIn, Pinterest, Telegram, Tumblr, Vk, WhatsApp, Xing, Facebook, Twitter, Line } from 'svelte-share-buttons-component';
+    import { text } from 'svelte/internal';
 
     let data = someJSON.default
     data = Object.keys(data).map(e => {
-        // let objt = {};
-        // objt[e] = data[e];
         return data[e]
     })
-
 
     $: teamName = $page.params.teamName
     $: teamName = teams.find(d => d.id==teamName).name
@@ -57,15 +60,24 @@
 				<a class="tweets" href={"https://twitter.com/_Numbers_Game/status/"+id} target="_blank">{text}</a>
 			</div> -->
             <div class={(expanded==id)?"selectedtweet":"unselectedtweet"}>
-                <div> 
+                <div>
+                    {#if text.includes('.png')}
+                        <div class="chart" id="chartpng">
+                            <h2 class="chart-title">Successful passes by pass distance</h2>
+                            <div class="chart-cont">
+                                <StackedBar />
+                            </div>
+                        </div>
+                    {:else}
                     <span class="tweets" on:click={toggle(id)}>{text}</span>
+                    {/if}
                     <br>
                     {#if expanded==id}
                         <div class="share-cont">
-                            <Twitter class="share-button" text="{text}" url={"https://twitter.com/_Numbers_Game/status/"+id} />
-                            <Reddit class="share-button" text="{"Read this tweet from the latest " + teamName + " match"}" url={"https://twitter.com/_Numbers_Game/status/"+id} />
-                            <WhatsApp class="share-button" text="{text} url={"https://twitter.com/_Numbers_Game/status/"+id}" />
-                            <Facebook class="share-button" quote="{text}" url={"https://twitter.com/_Numbers_Game/status/"+id} />
+                            <Twitter class="share-button" text="{text}" url={"https://twitter.com/b/status/"+id} />
+                            <Reddit class="share-button" text="{"Read this tweet from the latest " + teamName + " match"}" url={"https://twitter.com/b/status/"+id} />
+                            <WhatsApp class="share-button" text="{text} url={"https://twitter.com/b/status/"+id}" />
+                            <Facebook class="share-button" quote="{text}" url={"https://twitter.com/b/status/"+id} />
                         </div>
                     {/if}
                     <br>
@@ -94,6 +106,31 @@
 </div> -->
 
 <style>
+    .chart-title {
+		text-align: center;
+		font-size: 28px;
+        margin-bottom: 44px;
+	}
+	.chart {
+        width: 100%;
+        height: 380px;
+        margin-top: 40px;
+        margin-bottom: 50px;
+	}
+	.chart-cont {
+		height: 85%;
+		margin: 2%;
+	}
+    :global(text) {
+        font-size: 10px;
+    }
+    :global(.bullet) {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    :global(li) {
+        font-size: medium !important;
+    }
     .share-cont {
         width: max-content;
         margin: auto;
