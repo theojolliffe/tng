@@ -2,16 +2,16 @@
 	import Header from '$lib/header/Header.svelte';
     import {page} from '$app/stores'
 	import { teams } from '../fb-utils'
-    import StackedBar from '/Users/theojolliffe/Documents/Football/svelte-fb-charts/src/stacked-bar/src/StackedBar.svelte';
-    import * as someChartJSON from '/Users/theojolliffe/Documents/Football/svelte-fb-charts/src/stacked-bar/src/passing.json';
+    // import StackedBar from '/Users/theojolliffe/Documents/Football/svelte-fb-charts/src/stacked-bar/src/StackedBar.svelte';
+    // import * as someChartJSON from '/Users/theojolliffe/Documents/Football/svelte-fb-charts/src/stacked-bar/src/passing.json';
 
-    let misc = someChartJSON.default.misc
-	console.log('misc', misc)
+    // let misc = someChartJSON.default.misc
+	// console.log('misc', misc)
 
     import * as someJSON from '../tweets.json';
 
     import { Email, HackerNews, Reddit, LinkedIn, Pinterest, Telegram, Tumblr, Vk, WhatsApp, Xing, Facebook, Twitter, Line } from 'svelte-share-buttons-component';
-    import { text } from 'svelte/internal';
+    // import { text } from 'svelte/internal';
 
     let data = someJSON.default
     data = Object.keys(data).map(e => {
