@@ -72,14 +72,14 @@
                     <span class="tweets" on:click={toggle(id)}>{text}</span>
                     {/if}
                     <br>
-                    {#if expanded==id}
+                    <!-- {#if expanded==id}
                         <div class="share-cont">
                             <Twitter class="share-button" text="{text}" url={"https://twitter.com/b/status/"+id} />
                             <Reddit class="share-button" text="{"Read this tweet from the latest " + teamName + " match"}" url={"https://twitter.com/b/status/"+id} />
                             <WhatsApp class="share-button" text="{text} url={"https://twitter.com/b/status/"+id}" />
                             <Facebook class="share-button" quote="{text}" url={"https://twitter.com/b/status/"+id} />
                         </div>
-                    {/if}
+                    {/if} -->
                     <br>
                 </div>
             </div>
