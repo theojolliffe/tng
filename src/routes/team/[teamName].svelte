@@ -61,16 +61,16 @@
 			</div> -->
             <div class={(expanded==id)?"selectedtweet":"unselectedtweet"}>
                 <div>
-                    {#if text.includes('.png')}
+                    <!-- {#if text.includes('.png')}
                         <div class="chart" id="chartpng">
                             <h2 class="chart-title">Successful passes by pass distance</h2>
                             <div class="chart-cont">
                                 <StackedBar />
                             </div>
                         </div>
-                    {:else}
+                    {:else} -->
                     <span class="tweets" on:click={toggle(id)}>{text}</span>
-                    {/if}
+                    <!-- {/if} -->
                     <br>
                     <!-- {#if expanded==id}
                         <div class="share-cont">
