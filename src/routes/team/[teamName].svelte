@@ -2,16 +2,16 @@
 	import Header from '$lib/header/Header.svelte';
     import {page} from '$app/stores'
 	import { teams } from '../fb-utils'
-    // import StackedBar from '/Users/theojolliffe/Documents/Football/svelte-fb-charts/src/stacked-bar/src/StackedBar.svelte';
-    // import * as someChartJSON from '/Users/theojolliffe/Documents/Football/svelte-fb-charts/src/stacked-bar/src/passing.json';
+    import StackedBar from '/src/charts/stacked-bar/src/StackedBar.svelte';
+    import * as someChartJSON from '/src/charts/stacked-bar/src/passing.json';
 
-    // let misc = someChartJSON.default.misc
-	// console.log('misc', misc)
+    let misc = someChartJSON.default.misc
+	console.log('misc', misc)
 
     import * as someJSON from '../tweets.json';
 
     import { Email, HackerNews, Reddit, LinkedIn, Pinterest, Telegram, Tumblr, Vk, WhatsApp, Xing, Facebook, Twitter, Line } from 'svelte-share-buttons-component';
-    // import { text } from 'svelte/internal';
+    import { text } from 'svelte/internal';
 
     let data = someJSON.default
     data = Object.keys(data).map(e => {
@@ -61,25 +61,25 @@
 			</div> -->
             <div class={(expanded==id)?"selectedtweet":"unselectedtweet"}>
                 <div>
-                    <!-- {#if text.includes('.png')}
+                    {#if text.includes('.png')}
                         <div class="chart" id="chartpng">
                             <h2 class="chart-title">Successful passes by pass distance</h2>
                             <div class="chart-cont">
                                 <StackedBar />
                             </div>
                         </div>
-                    {:else} -->
+                    {:else}
                     <span class="tweets" on:click={toggle(id)}>{text}</span>
-                    <!-- {/if} -->
+                    {/if}
                     <br>
-                    <!-- {#if expanded==id}
+                    {#if expanded==id}
                         <div class="share-cont">
                             <Twitter class="share-button" text="{text}" url={"https://twitter.com/b/status/"+id} />
                             <Reddit class="share-button" text="{"Read this tweet from the latest " + teamName + " match"}" url={"https://twitter.com/b/status/"+id} />
                             <WhatsApp class="share-button" text="{text} url={"https://twitter.com/b/status/"+id}" />
                             <Facebook class="share-button" quote="{text}" url={"https://twitter.com/b/status/"+id} />
                         </div>
-                    {/if} -->
+                    {/if}
                     <br>
                 </div>
             </div>
